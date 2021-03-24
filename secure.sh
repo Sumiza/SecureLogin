@@ -44,7 +44,6 @@ if [ "$ans" = "1" ]; then
                         $holdkey >> ~/.ssh/authorized_keys
                         chmod 600 ~/.ssh/authorized_keys
                         sed -i '/PubkeyAuthentication /c\PubkeyAuthentication yes' /etc/ssh/sshd_config
-                        resetssh
                         tail -n 1 ~/.ssh/authorized_keys
                         echo "Key has been added"
                 else
