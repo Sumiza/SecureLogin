@@ -17,7 +17,8 @@ if [ "$ans" = "1" ]; then
                echo "Paste in the remote location of file (wget)"
                read -r ans
                if ! command -v wget &> /dev/null; then
-                        apt install wget -y
+                        apt install wget ca-certificates -y &> /dev/null
+                        yum install wget ca-certificates -y &> /dev/null
                fi
                wget -O tempkey "$ans"
                holdkey=$(cat tempkey)
@@ -70,7 +71,8 @@ elif [ "$ans" = "3" ]; then
         fi
 elif [ "$ans" = "4" ]; then
         if ! command -v google-authenticator &> /dev/null; then
-                        apt install libpam-google-authenticator -y
+                        apt install libpam-google-authenticator -y &> /dev/null
+                        yum install google-authenticator -y &> /dev/null
         fi
         google-authenticator -t -d -f --rate-limit=3 --rate-time=30 --window-size=3
         sed -i '/ChallengeResponseAuthentication /c\ChallengeResponseAuthentication yes' /etc/ssh/sshd_config
