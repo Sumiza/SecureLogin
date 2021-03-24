@@ -21,18 +21,15 @@ if [ "$ans" = "1" ]; then
                fi
                wget -O tempkey "$ans"
                holdkey=$(cat tempkey)
-                applykey
                rm tempkey
         elif [ "$ans" = "2" ]; then
                 echo "Paste in your public key"
                 read -r ans
                 holdkey="$ans"
-                applykey
         elif [ "$ans" = "3" ]; then
                 echo "Paste in the file with your public key"
                 read -r ans
                 holdkey=$(cat "$ans")
-                applykey
         fi
         
         if [ "$(grep "$holdkey" ~/.ssh/authorized_keys)" = "" ]; then
