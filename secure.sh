@@ -32,16 +32,16 @@ if [ "$ans" = "1" ]; then
                 holdkey=$(cat "$ans")
         fi
         
-        if [ "$(grep "$holdkey" ~/.ssh/authorized_keys)" = "" ]; then
+        if [ "$(grep "$holdkey" ~/.ssh/authorized_keys &> /dev/null)" = "" ]; then
                 echo "--------------------
-                $holdkey
-                --------------------
-                Do you want to add this key? y/n"
+$holdkey
+--------------------
+Do you want to add this key? y/n"
                 read -r ans
                 if [ "$ans" = "y" ]; then
                         mkdir -p ~/.ssh
                         chmod 700 ~/.ssh
-                        $holdkey >> ~/.ssh/authorized_keys
+                        echo "$holdkey" >> ~/.ssh/authorized_keys
                         chmod 600 ~/.ssh/authorized_keys
                         sed -i '/PubkeyAuthentication /c\PubkeyAuthentication yes' /etc/ssh/sshd_config
                         tail -n 1 ~/.ssh/authorized_keys
@@ -75,7 +75,7 @@ elif [ "$ans" = "4" ]; then
         google-authenticator -t -d -f --rate-limit=3 --rate-time=30 --window-size=3
         sed -i '/ChallengeResponseAuthentication /c\ChallengeResponseAuthentication yes' /etc/ssh/sshd_config
         if [ "$(grep "auth required pam_google_authenticator.so" /etc/pam.d/sshd)" = "" ]; then
-                "auth required pam_google_authenticator.so" >> /etc/pam.d/sshd
+                echo "auth required pam_google_authenticator.so" >> /etc/pam.d/sshd
         fi
 fi
 systemctl restart sshd
