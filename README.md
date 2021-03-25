@@ -5,6 +5,7 @@ Quick script to secure the login for a new server, for debian
 bash <(wget -qO- https://raw.githubusercontent.com/Sumiza/SecureLogin/main/secure.sh)
 
 Does basic configuration for different login types
+
         1) Install ssh key
         2) Remove password login
         3) Change ssh port
