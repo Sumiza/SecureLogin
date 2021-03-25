@@ -2,11 +2,13 @@
 
 Quick script to secure the login for a new server, for debian
 
+```
 bash <(wget -qO- https://raw.githubusercontent.com/Sumiza/SecureLogin/main/secure.sh)
-
+```
 if you dont have certificates installed:
+```
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/Sumiza/SecureLogin/main/secure.sh)
-
+```
 
 
 Does basic configuration for different login types
