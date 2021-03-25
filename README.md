@@ -1,6 +1,6 @@
 # SecureLogin
 
-Quick script to secure the login for a new server, for debian
+Quick script to secure the login for a new server, for Debian, CentOS and Ubuntu
 
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/Sumiza/SecureLogin/main/secure.sh)
