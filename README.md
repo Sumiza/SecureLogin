@@ -30,4 +30,4 @@ It will also set all the permissions for the authorized_keys file and folder
 
 3.  Changes the ssh port, (security through obscurity joke here) but it will cut down on a lot of noise.
 
-4.  Will install the Google autenticator and set it up to work with your password, ssh keys will bypass the 2FA.
+4.  Will install the Google authenticator and set it up to work with your password, ssh keys will bypass the 2FA.
