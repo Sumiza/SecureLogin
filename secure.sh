@@ -83,5 +83,6 @@ elif [ "$ans" = "4" ]; then
         fi
         echo "Please copy down the emergency codes"
 fi
-service sshd restart
+service sshd restart  2>/dev/null
+service ssh restart  2>/dev/null
 echo "Test login with another terminal window before logging out"
